@@ -3,7 +3,7 @@
 // Reads the sealed snapshot at /input/snapshot.json (or --input), ranks the
 // pre-token protocols by implied launch value, and writes the board, the
 // dashboard data, the dashboard itself, the screenshots and the dossier to
-// the output directory (MAKEFUN_OUTPUT_DIR, --output, or ./out).
+// the output directory (MAKEFUN_OUTPUT_DIR, --output, or /output).
 //
 // The model, in one line:
 //   implied = TVL x category multiple x growth x maturity x breadth
@@ -59,7 +59,7 @@ const VERSION_SUFFIX = /\s(V\d+(\.\d+)?|v\d+(\.\d+)?|\d+\.\d+)$/;
 const WRAPPED_WORD = /\b(wrapped|staked|staking)\b/i;
 
 function parseArgs(argv) {
-  const out = { input: '/input/snapshot.json', output: process.env.MAKEFUN_OUTPUT_DIR || 'out' };
+  const out = { input: '/input/snapshot.json', output: process.env.MAKEFUN_OUTPUT_DIR || '/output' };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--input' && argv[i + 1]) out.input = argv[++i];
     else if (argv[i] === '--output' && argv[i + 1]) out.output = argv[++i];
