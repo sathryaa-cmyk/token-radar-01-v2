@@ -1,0 +1,75 @@
+/* Token Radar — dark radar theme. No framework, no network, system fonts. */
+:root{
+  --bg:#0a0e1a; --panel:#111827; --panel2:#0d1424; --line:#1f2c47;
+  --ink:#e8edf6; --muted:#9aa8c0; --faint:#67779a;
+  --gold:#f0b429; --teal:#34d3bd; --green:#4ade80; --red:#f87171; --chip:#16233c;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.top{background:linear-gradient(180deg,#0e1830,#0a0e1a);border-bottom:1px solid var(--line);padding:32px 0 24px}
+.kicker{margin:0 0 8px;color:var(--gold);font:700 12px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
+h1{margin:0 0 10px;font-size:32px;line-height:1.15;letter-spacing:-.01em}
+.lede{margin:0;max-width:880px;color:var(--muted);font-size:16px}
+.lede strong{color:var(--ink)}
+.formula{margin:16px 0 0;display:inline-block;background:var(--panel);border:1px solid var(--line);
+  border-radius:8px;padding:8px 14px;color:var(--gold);
+  font:600 14px/1.5 ui-monospace,Menlo,Consolas,monospace}
+.method{margin:12px 0 0;max-width:880px;color:var(--muted);font-size:14px}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px}
+.stat b{display:block;font-size:18px;color:var(--gold)}
+.stat span{color:var(--muted)}
+.controls{margin:20px 0 0}
+.controls .row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.controls label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.controls input,.controls select{background:var(--panel);color:var(--ink);border:1px solid var(--line);
+  border-radius:8px;padding:9px 11px;font:inherit;min-width:190px}
+.controls input:focus,.controls select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pills button{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:999px;
+  padding:8px 15px;font:inherit;cursor:pointer}
+.pills button.on{background:var(--gold);border-color:var(--gold);color:#1a1405;font-weight:700}
+.count{margin:14px 0 0;color:var(--muted);font-size:13px}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--panel2)}
+tbody tr.sel{background:var(--panel2)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+td.num{font-variant-numeric:tabular-nums}
+.name{font-weight:650}
+.tag{display:inline-block;margin-left:7px;background:var(--chip);border:1px solid var(--line);
+  border-radius:5px;padding:1px 6px;font-size:11px;color:var(--muted);vertical-align:1px}
+.val{color:var(--gold);font-weight:700;white-space:nowrap}
+.up{color:var(--green)} .down{color:var(--red)} .flat{color:var(--muted)}
+.detail{margin-top:18px;background:var(--panel);border:1px solid var(--gold);border-radius:12px;padding:22px 24px}
+.detail h2{margin:0 0 4px;font-size:24px}
+.detail .sub{margin:0 0 14px;color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px}
+.chip b{color:var(--gold)}
+.detail h3{margin:18px 0 6px;font-size:15px}
+.detail table{margin-top:4px}
+.detail th,.detail td{padding:8px 10px}
+.detail ol{margin:6px 0 0;padding-left:22px}
+.detail ol li{margin-bottom:9px}
+.detail .note{color:var(--muted);font-size:13px}
+.detail .close{float:right;background:var(--panel2);color:var(--ink);border:1px solid var(--line);
+  border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}
+.playbook{margin:0 0 6px;padding:10px 12px;background:var(--panel2);border-left:3px solid var(--teal);
+  border-radius:0 8px 8px 0;color:var(--muted);font-size:14px}
+.playbook b{color:var(--teal)}
+.multiples{margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.multiples summary{cursor:pointer;font-weight:650;font-size:15px}
+.multiples p{color:var(--muted);font-size:14px}
+.multiples tbody tr{cursor:default}
+.foot{margin:26px 0 40px;color:var(--faint);font-size:13px}
+@media (max-width:760px){
+  h1{font-size:25px}
+  .controls input,.controls select{min-width:0;width:100%}
+  th:nth-child(4),td:nth-child(4){display:none}
+}
