@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <p class="kicker">Token Radar &middot; radar-3 &middot; snapshot {{SNAPSHOT_DATE}}</p>
+    <h1>Which protocol should you farm next?</h1>
+    <p class="lede">Every protocol in the snapshot that <strong>records no token yet</strong>, ranked by what its launch would be worth if its record stayed as it is. The value follows from the snapshot&rsquo;s own figures &mdash; TVL, seven-day growth, age with no token, chains &mdash; priced against the live protocols in the same category. Nothing here predicts whether or when a token is issued.</p>
+    <div class="formula">implied value = TVL &times; category multiple &times; growth &times; maturity &times; breadth</div>
+    <p class="method">Priced off {{LIVE_COUNT}} live protocols. Each category&rsquo;s multiple is the median market-cap / TVL of its live protocols, winsorized to 0.02&ndash;2.00&times; and shrunk toward the whole market&rsquo;s median of {{MARKET_MEDIAN}}&times; when it has few comparables &mdash; so one live protocol cannot set a category&rsquo;s price. A protocol whose token already trades is never given an implied value: it sits apart in the Live view at the market&rsquo;s own price.</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="controls" aria-label="Filter and sort">
+    <div class="row">
+      <label>Search
+        <input id="q" type="search" placeholder="Protocol name or slug&hellip;" autocomplete="off">
+      </label>
+      <label>Category
+        <select id="cat"><option value="">All categories</option></select>
+      </label>
+      <label>Chain
+        <select id="chain"><option value="">All chains</option></select>
+      </label>
+      <label>Sort by
+        <select id="sort">
+          <option value="value">Implied value</option>
+          <option value="tvl">TVL</option>
+          <option value="growth">7-day growth</option>
+          <option value="age">Age with no token</option>
+          <option value="name">Name A&ndash;Z</option>
+        </select>
+      </label>
+    </div>
+    <div class="pills" role="group" aria-label="Scope">
+      <button data-scope="all" class="on">All pre-token</button>
+      <button data-scope="watchlist">Watchlist only</button>
+      <button data-scope="early">Early finds</button>
+      <button data-scope="live">Live tokens &mdash; already trading</button>
+    </div>
+    <p class="count" id="count"></p>
+  </section>
+  <section id="detail" class="detail" hidden></section>
+  <section aria-label="Board">
+    <table id="board">
+      <thead><tr>
+        <th>#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th><th class="num">Implied value</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+  <details class="multiples">
+    <summary>Category multiples &mdash; how each category is priced</summary>
+    <p>Each multiple is the median market-cap / TVL of the live protocols in that category, winsorized to 0.02&ndash;2.00&times;, then shrunk toward the market median of {{MARKET_MEDIAN}}&times; with a weight of 3. Categories with many live comparables keep their own median; thin ones borrow the market&rsquo;s.</p>
+    <table>
+      <thead><tr><th>Category</th><th class="num">Live comps</th><th class="num">Median</th><th class="num">Multiple</th></tr></thead>
+      <tbody>
+<!-- MULTIPLES_ROWS -->
+      </tbody>
+    </table>
+  </details>
+  <footer class="foot">
+    <p>Snapshot: DefiLlama protocols, fetched {{SNAPSHOT_DATE}}. &ldquo;Records no token&rdquo; is what the snapshot says &mdash; a protocol on this board may still have a token its DefiLlama record does not carry. An implied value is this radar&rsquo;s own claim, never a price anyone guarantees.</p>
+  </footer>
+</main>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
